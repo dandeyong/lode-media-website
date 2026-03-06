@@ -2,46 +2,46 @@
 
 ## Quick Start for Logan
 
-### 1. Install Claude Code (if you haven't already)
-Open Terminal and paste:
-```
-npm install -g @anthropic-ai/claude-code
-```
+### Step 1: Open Terminal
+Press `Cmd + Space`, type **Terminal**, press Enter.
 
-### 2. Download the website code
-Open Terminal and paste these two lines:
+### Step 2: Download the website and install tools
+Copy and paste these 3 lines into Terminal (one at a time):
 ```
 git clone https://github.com/dandeyong/lode-media-website.git
 cd lode-media-website
+bash setup.sh
 ```
 
-### 3. Open it in Claude
-While still in Terminal, type:
+The setup script will automatically install everything you need (Git, Node.js, Claude Code). If a popup appears asking to install developer tools, click **Install** and run `bash setup.sh` again when it's done.
+
+### Step 3: Start Claude
 ```
 claude
 ```
 
-### 4. Tell Claude what you want
+### Step 4: Tell Claude what you want
 Just type in plain English! Examples:
 - "Change the phone number to 07712 345678"
 - "Update the Instagram link to @lodemedia"
 - "Change the hero headline to something catchier"
-- "Make the packages section show monthly instead of per month"
+- "Add my real logo files for the brands"
 - "Preview the website so I can see it"
+- "What still needs doing on this site?"
 
 Claude already knows everything about this project and will make the changes for you.
 
-### 5. Save your changes
+### Step 5: Save your changes
 When you're happy, tell Claude:
 - "Commit and push my changes"
-- "Deploy to Netlify"
+- "Deploy the changes live"
 
 ---
 
-## Useful Commands to Tell Claude
+## Useful Things to Tell Claude
 | What you want | What to say |
 |---|---|
-| See the website locally | "Start the preview server" |
+| See the website locally | "Preview the website" |
 | Change text/content | "Change [X] to [Y]" |
 | Change colours/design | "Make the background darker" etc. |
 | Add real brand logos | "Replace the Puma logo with this file: [drag file in]" |
