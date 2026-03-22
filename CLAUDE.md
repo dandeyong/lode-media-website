@@ -56,7 +56,7 @@ git push
 ```
 
 ## Contact Info Used on Site
-- **Email:** hello@lodemedia.co.uk
+- **Email:** logan@lodemedia.co.uk
 - **Phone:** +44 7XXX XXXXXX (placeholder)
 - **LinkedIn:** https://www.linkedin.com/in/logan-deyong-38a0991ba/
 - **Address:** Manchester, UK

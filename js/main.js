@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     } catch (err) {
       formStatus.className = 'form-status error';
-      formStatus.textContent = 'Something went wrong. Please email us directly at hello@lodemedia.co.uk';
+      formStatus.textContent = 'Something went wrong. Please email us directly at logan@lodemedia.co.uk';
     }
 
     submitBtn.innerHTML = originalText;

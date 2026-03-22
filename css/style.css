@@ -610,6 +610,83 @@ h3 { font-size: clamp(1.2rem, 2vw, 1.4rem); letter-spacing: -0.01em; }
   stroke: rgba(255, 255, 255, 0.12);
 }
 
+.work-embeds {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.work-embed {
+  min-width: 0;
+}
+
+.work-embed .instagram-media {
+  margin: 0 !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+}
+
+@media (max-width: 1024px) {
+  .work-embeds {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .work-embeds {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+  }
+}
+
+.work-card-gradient {
+  width: 100%;
+  height: 100%;
+}
+
+.work-card-gradient-1 {
+  background: linear-gradient(135deg, #1a3a2a 0%, #0d1f17 40%, #2d1810 100%);
+}
+
+.work-card-gradient-2 {
+  background: linear-gradient(135deg, #0d2137 0%, #1a1a2e 40%, #16213e 100%);
+}
+
+.work-card-gradient-3 {
+  background: linear-gradient(135deg, #1a0a2e 0%, #16213e 40%, #0d2137 100%);
+}
+
+.work-card-views {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 4px;
+}
+
+.work-cta {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.btn-outline {
+  display: inline-block;
+  padding: 14px 32px;
+  border: 1px solid var(--gray-300);
+  border-radius: 50px;
+  color: var(--navy);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.btn-outline:hover {
+  background: var(--navy);
+  color: var(--white);
+  border-color: var(--navy);
+}
+
 /* ============================================
    CLIENTS — minimal
    ============================================ */
