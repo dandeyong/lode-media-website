@@ -19,18 +19,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const mobileToggle = document.getElementById('mobileToggle');
   const navLinks = document.getElementById('navLinks');
 
-  mobileToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    mobileToggle.classList.toggle('active');
-  });
-
-  // Close mobile nav on link click
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      navLinks.classList.remove('active');
-      mobileToggle.classList.remove('active');
+  if (mobileToggle && navLinks) {
+    mobileToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      mobileToggle.classList.toggle('active');
     });
-  });
+
+    // Close mobile nav on link click
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        mobileToggle.classList.remove('active');
+      });
+    });
+  }
 
   // --- Smooth scroll for anchor links ---
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -83,55 +85,59 @@ document.addEventListener('DOMContentLoaded', () => {
   const contactForm = document.getElementById('contactForm');
   const formStatus = document.getElementById('formStatus');
 
-  contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
+  if (contactForm && formStatus) {
+    contactForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-    const submitBtn = contactForm.querySelector('button[type="submit"]');
-    const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = 'Sending...';
-    submitBtn.disabled = true;
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = 'Sending...';
+      submitBtn.disabled = true;
 
-    try {
-      const formData = new FormData(contactForm);
-      const response = await fetch(contactForm.action, {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-      });
+      try {
+        const formData = new FormData(contactForm);
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        });
 
-      if (response.ok) {
-        formStatus.className = 'form-status success';
-        formStatus.textContent = 'Message sent successfully! We\'ll be in touch within 24 hours.';
-        contactForm.reset();
-      } else {
-        throw new Error('Form submission failed');
+        if (response.ok) {
+          formStatus.className = 'form-status success';
+          formStatus.textContent = 'Message sent successfully! We\'ll be in touch within 24 hours.';
+          contactForm.reset();
+        } else {
+          throw new Error('Form submission failed');
+        }
+      } catch (err) {
+        formStatus.className = 'form-status error';
+        formStatus.textContent = 'Something went wrong. Please email us directly at info@lodemedia.co.uk';
       }
-    } catch (err) {
-      formStatus.className = 'form-status error';
-      formStatus.textContent = 'Something went wrong. Please email us directly at logan@lodemedia.co.uk';
-    }
 
-    submitBtn.innerHTML = originalText;
-    submitBtn.disabled = false;
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
 
-    // Hide status after 5 seconds
-    setTimeout(() => {
-      formStatus.className = 'form-status';
-    }, 5000);
-  });
+      // Hide status after 5 seconds
+      setTimeout(() => {
+        formStatus.className = 'form-status';
+      }, 5000);
+    });
+  }
 
   // --- Stat counter animation ---
   const statItems = document.querySelectorAll('.stat-item h3');
-  const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animateCounter(entry.target);
-        statsObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.5 });
+  if (statItems.length > 0) {
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounter(entry.target);
+          statsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
 
-  statItems.forEach(stat => statsObserver.observe(stat));
+    statItems.forEach(stat => statsObserver.observe(stat));
+  }
 
   function animateCounter(element) {
     const text = element.textContent;
