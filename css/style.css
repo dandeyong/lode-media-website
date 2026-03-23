@@ -489,6 +489,25 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); letter-spacing: -0.01em; }
   border-radius: var(--radius);
 }
 
+/* --- Page Hero (sub-pages) --- */
+.page-hero {
+  padding: 140px 0 60px;
+  background: var(--gradient-1);
+  background-size: 300% 300%;
+  animation: gradientShift 12s ease infinite;
+  text-align: center;
+}
+
+.page-hero .section-label {
+  color: rgba(255, 255, 255, 0.8);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.page-hero h1 {
+  color: var(--white);
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+}
+
 /* --- Founder Section --- */
 .founder {
   padding: var(--section-pad) 0;
