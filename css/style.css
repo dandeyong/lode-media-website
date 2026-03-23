@@ -122,6 +122,16 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); letter-spacing: -0.01em; }
   box-shadow: 0 8px 30px rgba(124, 58, 237, 0.4);
 }
 
+.btn-gradient {
+  background: var(--gradient-1);
+  color: var(--white);
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.3);
+}
+.btn-gradient:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(124, 58, 237, 0.5);
+}
+
 .btn-secondary {
   background: var(--white);
   color: var(--dark);
@@ -318,21 +328,44 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); letter-spacing: -0.01em; }
   text-decoration-thickness: 4px;
 }
 
-.hero-sub {
-  font-size: 1.15rem;
-  color: rgba(255, 255, 255, 0.95);
-  max-width: 580px;
-  margin: 0 auto 40px;
+.hero-sub, .hero-content > p {
+  font-size: 1.35rem;
+  color: var(--white);
+  max-width: 620px;
+  margin: 0 auto 48px;
   line-height: 1.7;
-  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+  font-weight: 500;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
 }
 
 .hero-buttons {
   display: flex;
-  gap: 16px;
+  gap: 20px;
   justify-content: center;
   flex-wrap: wrap;
   margin-bottom: 60px;
+}
+
+.hero-buttons .btn {
+  padding: 20px 44px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-shadow: none;
+}
+
+.hero-buttons .btn-outline {
+  color: var(--white) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  border-width: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.hero-buttons .btn-outline:hover {
+  background: var(--white) !important;
+  color: var(--dark) !important;
+  border-color: var(--white) !important;
 }
 
 .hero-stats {
