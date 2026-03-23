@@ -513,6 +513,29 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); letter-spacing: -0.01em; }
   text-align: center;
 }
 
+.page-hero-video {
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero-video-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  opacity: 0.35;
+}
+
+.page-hero-video::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.7) 0%, rgba(6, 182, 212, 0.5) 50%, rgba(16, 185, 129, 0.4) 100%);
+  z-index: 1;
+}
+
 .page-hero .section-label {
   color: rgba(255, 255, 255, 0.8);
   border-color: rgba(255, 255, 255, 0.3);
