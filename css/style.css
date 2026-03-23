@@ -220,6 +220,21 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); letter-spacing: -0.01em; }
   color: var(--purple);
 }
 
+.nav-home {
+  background: var(--gradient-1) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+  font-weight: 700 !important;
+}
+
+.header.scrolled .nav-home {
+  background: var(--gradient-1) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  background-clip: text !important;
+}
+
 .nav-cta {
   padding: 10px 24px !important;
   font-size: 0.8rem !important;
