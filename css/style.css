@@ -879,10 +879,9 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); letter-spacing: -0.01em; }
    FOOTER
    ============================================ */
 footer {
-  background: var(--gray-50);
-  color: var(--gray-500);
+  background: linear-gradient(135deg, #1E1B4B 0%, #312E81 40%, #1E3A5F 100%);
+  color: rgba(255, 255, 255, 0.6);
   padding: 64px 0 32px;
-  border-top: 1px solid var(--gray-200);
 }
 
 .footer-grid {
@@ -905,7 +904,7 @@ footer {
 }
 
 .footer-col h4 {
-  color: var(--dark);
+  color: var(--white);
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -919,10 +918,10 @@ footer {
   transition: var(--transition);
 }
 
-.footer-col a:hover { color: var(--purple); }
+.footer-col a:hover { color: var(--white); }
 
 .footer-social h4 {
-  color: var(--dark);
+  color: var(--white);
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -938,7 +937,7 @@ footer {
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: var(--gray-200);
+  background: rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -953,13 +952,13 @@ footer {
 .social-link svg {
   width: 18px;
   height: 18px;
-  fill: var(--gray-600);
+  fill: rgba(255, 255, 255, 0.7);
 }
 
 .social-link:hover svg { fill: var(--white); }
 
 .footer-bottom {
-  border-top: 1px solid var(--gray-200);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 24px;
   display: flex;
   justify-content: space-between;
