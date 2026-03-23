@@ -637,7 +637,7 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); letter-spacing: -0.01em; }
   box-shadow: 0 12px 40px rgba(124, 58, 237, 0.1);
 }
 
-.service-card-icon {
+.service-card-icon, .service-icon {
   width: 48px;
   height: 48px;
   border-radius: 12px;
@@ -646,9 +646,10 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); letter-spacing: -0.01em; }
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
+  flex-shrink: 0;
 }
 
-.service-card-icon svg {
+.service-card-icon svg, .service-icon svg {
   width: 24px;
   height: 24px;
   stroke: var(--purple);
@@ -988,6 +989,55 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); letter-spacing: -0.01em; }
 
 .form-status { margin-top: 12px; font-size: 0.85rem; }
 
+/* --- Contact method icons --- */
+.contact-method-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #F5F3FF, #EDE9FE);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-method-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--purple);
+}
+
+.contact-method {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.contact-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* --- Feature icons (about page) --- */
+.feature-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #F5F3FF, #EDE9FE);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.feature-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--purple);
+  fill: none;
+}
+
 /* ============================================
    HOMEPAGE TEASERS
    ============================================ */
@@ -1206,7 +1256,7 @@ footer {
 }
 
 .policy-updated {
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--gray-400);
   font-size: 0.875rem;
   margin-bottom: 2rem;
 }
@@ -1215,6 +1265,7 @@ footer {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 2rem;
   margin-bottom: 1.5rem;
+  color: var(--dark);
 }
 
 .policy-content h3 {
@@ -1222,6 +1273,7 @@ footer {
   font-size: 1.25rem;
   margin-top: 2.5rem;
   margin-bottom: 1rem;
+  color: var(--dark);
 }
 
 .policy-content h4 {
@@ -1229,19 +1281,21 @@ footer {
   font-size: 1.1rem;
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
+  color: var(--dark);
 }
 
 .policy-content p {
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--gray-600);
   line-height: 1.8;
   margin-bottom: 1rem;
 }
 
 .policy-content ul {
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--gray-600);
   line-height: 1.8;
   margin-bottom: 1rem;
   padding-left: 1.5rem;
+  list-style: disc;
 }
 
 .policy-content li {
@@ -1249,13 +1303,13 @@ footer {
 }
 
 .policy-content a {
-  color: #3B7BF6;
+  color: var(--purple);
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
 .policy-content a:hover {
-  color: #00C2FF;
+  color: var(--pink);
 }
 
 .cookie-table {
@@ -1268,14 +1322,14 @@ footer {
 .cookie-table td {
   padding: 0.75rem 1rem;
   text-align: left;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.75);
+  border: 1px solid var(--gray-200);
+  color: var(--gray-600);
   font-size: 0.9rem;
 }
 
 .cookie-table th {
-  background: rgba(255, 255, 255, 0.05);
-  color: #fff;
+  background: var(--gray-50);
+  color: var(--dark);
   font-weight: 600;
   font-family: 'Space Grotesk', sans-serif;
 }
