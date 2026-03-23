@@ -124,6 +124,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- Reach ticker (goes up 10M each visit) ---
+  const reachEl = document.getElementById('reachCounter');
+  if (reachEl) {
+    const baseReach = 100; // 100M base
+    const stored = parseInt(localStorage.getItem('lode_reach_bonus') || '0');
+    const bonus = stored + 10;
+    localStorage.setItem('lode_reach_bonus', bonus);
+    const totalReach = baseReach + bonus;
+    reachEl.textContent = totalReach + 'M+';
+  }
+
   // --- Stat counter animation ---
   const statItems = document.querySelectorAll('.stat-item h3');
   if (statItems.length > 0) {
