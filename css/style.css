@@ -879,9 +879,10 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); letter-spacing: -0.01em; }
    FOOTER
    ============================================ */
 footer {
-  background: var(--dark);
-  color: rgba(255, 255, 255, 0.6);
+  background: var(--gray-50);
+  color: var(--gray-500);
   padding: 64px 0 32px;
+  border-top: 1px solid var(--gray-200);
 }
 
 .footer-grid {
@@ -892,9 +893,9 @@ footer {
 }
 
 .footer-brand .logo img {
-  height: 28px;
+  height: 32px;
   margin-bottom: 16px;
-  filter: brightness(0) invert(1);
+  filter: none;
 }
 
 .footer-brand p {
@@ -904,7 +905,7 @@ footer {
 }
 
 .footer-col h4 {
-  color: var(--white);
+  color: var(--dark);
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -918,10 +919,10 @@ footer {
   transition: var(--transition);
 }
 
-.footer-col a:hover { color: var(--white); }
+.footer-col a:hover { color: var(--purple); }
 
 .footer-social h4 {
-  color: var(--white);
+  color: var(--dark);
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -937,7 +938,7 @@ footer {
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--gray-200);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -952,13 +953,13 @@ footer {
 .social-link svg {
   width: 18px;
   height: 18px;
-  fill: rgba(255, 255, 255, 0.7);
+  fill: var(--gray-600);
 }
 
 .social-link:hover svg { fill: var(--white); }
 
 .footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--gray-200);
   padding-top: 24px;
   display: flex;
   justify-content: space-between;
