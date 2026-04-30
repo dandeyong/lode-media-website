@@ -746,7 +746,10 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); letter-spacing: -0.01em; }
   aspect-ratio: 9 / 16;
   border-radius: var(--radius);
   overflow: hidden;
-  background: #1a1f2e;
+  /* Fallback gradient shown until poster/video loads */
+  background: radial-gradient(ellipse at 30% 20%, rgba(59, 123, 246, 0.35), transparent 60%),
+              radial-gradient(ellipse at 70% 80%, rgba(0, 194, 255, 0.25), transparent 60%),
+              linear-gradient(135deg, #0F1729 0%, #1A2540 100%);
   box-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.6);
   transition: box-shadow 0.35s ease, outline 0.2s ease;
   outline: 1px solid rgba(255, 255, 255, 0.06);
@@ -757,25 +760,15 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); letter-spacing: -0.01em; }
   outline-color: rgba(0, 194, 255, 0.4);
 }
 
-/* Per-brand gradient backdrop until real MP4 posters land */
-.work-card-bg {
+/* Self-hosted reel — poster shows by default, video plays on hover (see js/main.js) */
+.work-card-video {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 30% 20%, rgba(59, 123, 246, 0.35), transparent 60%),
-              radial-gradient(ellipse at 70% 80%, rgba(0, 194, 255, 0.25), transparent 60%),
-              linear-gradient(135deg, #0F1729 0%, #1A2540 100%);
-}
-
-.work-card[data-brand="liv"] .work-card-bg {
-  background: radial-gradient(ellipse at 30% 20%, rgba(255, 220, 50, 0.25), transparent 60%),
-              radial-gradient(ellipse at 70% 80%, rgba(220, 38, 38, 0.25), transparent 60%),
-              linear-gradient(135deg, #1a1d3a 0%, #2a1535 100%);
-}
-
-.work-card[data-brand="puma"] .work-card-bg {
-  background: radial-gradient(ellipse at 30% 20%, rgba(255, 100, 50, 0.3), transparent 60%),
-              radial-gradient(ellipse at 70% 80%, rgba(60, 30, 20, 0.5), transparent 60%),
-              linear-gradient(135deg, #1f1410 0%, #2e1a0f 100%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  pointer-events: none; /* let click bubble to the parent <a> */
 }
 
 .work-card-brand {
@@ -789,7 +782,7 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); letter-spacing: -0.01em; }
   background: rgba(255, 255, 255, 0.92);
   padding: 4px 8px;
   border-radius: 6px;
-  z-index: 2;
+  z-index: 3;
 }
 
 .work-card-play {
@@ -805,9 +798,10 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); letter-spacing: -0.01em; }
   align-items: center;
   justify-content: center;
   color: var(--dark);
-  z-index: 2;
-  transition: transform 0.3s ease, background 0.2s ease;
+  z-index: 3;
+  transition: opacity 0.25s ease, transform 0.3s ease, background 0.2s ease;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
 }
 
 .work-card-play svg {
@@ -816,16 +810,17 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); letter-spacing: -0.01em; }
   margin-left: 3px;
 }
 
+/* Hide the play button while hovering — video itself becomes the affordance */
 .work-card:hover .work-card-play {
-  transform: translate(-50%, -50%) scale(1.08);
-  background: var(--white);
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.85);
 }
 
 .work-card-views {
   position: absolute;
   bottom: 16px;
   left: 16px;
-  z-index: 2;
+  z-index: 3;
   background: rgba(0, 0, 0, 0.55);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);

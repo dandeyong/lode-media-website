@@ -43,12 +43,13 @@ CNAME               — GH Pages custom domain target
 - **Footer** — Nav, IG + TikTok + LinkedIn icons (all → @logandeyonggolf / Logan Deyong), legal links
 
 ## Work page architecture (important)
-The Work page does NOT use Instagram embeds — those are too brittle. Instead, each reel is a `.work-card` that LOOKS like a video preview (9:16 aspect, gradient backdrop, brand logo, view count, play icon) and clicks out to Instagram in a new tab. **Outbound IG links never break; embeds do.**
+The Work page does NOT use Instagram embeds — those are too brittle. Instead, each reel is a `.work-card` containing a self-hosted `<video>` element with a poster frame. **On desktop hover the muted reel autoplays in the card; on click the user is sent to Instagram in a new tab** so they see the real engagement (likes, comments, follows).
 
-When Logan supplies real MP4s + posters:
-1. Drop the MP4 at `assets/video/work/<slug>.mp4` and poster at `assets/images/work/<slug>.jpg`
-2. Replace the `.work-card-bg` div with `<img src="assets/images/work/<slug>.jpg" class="work-card-poster">` and add a `<video>` element + lightbox open behaviour
-3. The card structure is already designed around this swap
+Files per reel:
+- MP4 at `assets/video/work/<slug>.mp4` — re-encoded h264 540p, audio stripped (`-an`), `+faststart` for instant streaming. Source MP4s pulled with `yt-dlp -f 1` or `-f 3` from the IG permalink, then optimised with ffmpeg
+- Poster at `assets/images/work/<slug>.jpg` — extracted with `ffmpeg -ss 00:00:01 -frames:v 1`
+
+To add a new reel: copy an existing `<a class="work-card">` block, swap the `poster=`/`src=` paths, brand logo, title, view count, IG permalink. Hover-autoplay is wired up automatically by `js/main.js` for any `.work-card video`.
 
 ## Outstanding tasks (truly remaining)
 - [ ] **Domain → live:** add DNS records at IONOS to point `www.lodemedia.co.uk` at GH Pages. Canonical is `www.` (set in `CNAME` file — GH redirects apex to www automatically once configured). Records to add in IONOS DNS panel:
@@ -67,9 +68,9 @@ When Logan supplies real MP4s + posters:
   3. Add the 5 records above (TTL = 1 hour is fine)
   4. Wait 10–60 min for propagation. Check with `dig www.lodemedia.co.uk` — should resolve to one of the GH Pages IPs
   5. In GitHub repo → **Settings** → **Pages** → "Custom domain" should show `www.lodemedia.co.uk` (read from CNAME file). Tick **Enforce HTTPS** once available
-- [ ] **Real reel MP4s + posters** for the Work page (Logan to supply)
 - [ ] **Founder photo** on the About page (currently uses founder video; a still might be useful)
 - [ ] **Sente Golf logo** PNG (only remaining SVG-text brand)
+- [ ] **More reels** — currently 2 (Jon Rahm, Guess The Tracer). Logan can send IG permalinks and we add them via the yt-dlp + ffmpeg pipeline above
 
 ## Deploying
 Push to `main` deploys automatically to GitHub Pages. Netlify is a redundant preview that also tracks `main`.

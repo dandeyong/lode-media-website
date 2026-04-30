@@ -124,6 +124,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- Work card hover-autoplay ---
+  // Plays the muted reel preview while pointer is over the card; resets on leave.
+  // Uses pointer events so it works for mouse + pen; touch devices are skipped
+  // (mobile users tap → outbound to Instagram, which is a better mobile experience).
+  document.querySelectorAll('.work-card-video').forEach(video => {
+    const card = video.closest('.work-card');
+    if (!card) return;
+
+    const play = () => {
+      // .play() returns a promise; swallow rejection (e.g. if browser blocks autoplay)
+      const p = video.play();
+      if (p && typeof p.catch === 'function') p.catch(() => {});
+    };
+    const stop = () => {
+      video.pause();
+      video.currentTime = 0;
+    };
+
+    card.addEventListener('pointerenter', (e) => {
+      if (e.pointerType === 'touch') return;
+      play();
+    });
+    card.addEventListener('pointerleave', (e) => {
+      if (e.pointerType === 'touch') return;
+      stop();
+    });
+  });
+
   // --- Reach ticker (goes up 10M each visit) ---
   const reachEl = document.getElementById('reachCounter');
   if (reachEl) {
