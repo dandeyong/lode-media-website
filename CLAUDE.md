@@ -40,7 +40,7 @@ CNAME               — GH Pages custom domain target
 - **Work** — Featured reels showcase (self-hosted-ready cards, see below)
 - **Clients** — Scrolling brand logos (real PNGs for Puma, Sky, LIV, PGA, UPS, H&B, DP World; only SENTE GOLF still SVG text)
 - **Contact** — FormSubmit.co form → info@lodemedia.co.uk
-- **Footer** — Nav, IG + LinkedIn icons, legal links
+- **Footer** — Nav, IG + TikTok + LinkedIn icons (all → @logandeyonggolf / Logan Deyong), legal links
 
 ## Work page architecture (important)
 The Work page does NOT use Instagram embeds — those are too brittle. Instead, each reel is a `.work-card` that LOOKS like a video preview (9:16 aspect, gradient backdrop, brand logo, view count, play icon) and clicks out to Instagram in a new tab. **Outbound IG links never break; embeds do.**
@@ -51,13 +51,24 @@ When Logan supplies real MP4s + posters:
 3. The card structure is already designed around this swap
 
 ## Outstanding tasks (truly remaining)
-- [ ] **Domain:** point `lodemedia.co.uk` DNS at GH Pages (registrar TBC). `CNAME` file already in repo. Records needed:
-  - Apex `A` records → `185.199.108.153 / .109.153 / .110.153 / .111.153`
-  - `www` `CNAME` → `dandeyong.github.io`
-  - Then enable HTTPS in GH Pages settings
+- [ ] **Domain → live:** add DNS records at IONOS to point `www.lodemedia.co.uk` at GH Pages. Canonical is `www.` (set in `CNAME` file — GH redirects apex to www automatically once configured). Records to add in IONOS DNS panel:
+
+  | Type  | Host name | Value / Target                      |
+  |-------|-----------|-------------------------------------|
+  | A     | @         | `185.199.108.153`                   |
+  | A     | @         | `185.199.109.153`                   |
+  | A     | @         | `185.199.110.153`                   |
+  | A     | @         | `185.199.111.153`                   |
+  | CNAME | www       | `dandeyong.github.io.`              |
+
+  How to do it in IONOS:
+  1. Log in → **Domains & SSL** → click `lodemedia.co.uk` → **DNS**
+  2. Delete any existing A records on `@` and CNAME on `www` (if pointing elsewhere)
+  3. Add the 5 records above (TTL = 1 hour is fine)
+  4. Wait 10–60 min for propagation. Check with `dig www.lodemedia.co.uk` — should resolve to one of the GH Pages IPs
+  5. In GitHub repo → **Settings** → **Pages** → "Custom domain" should show `www.lodemedia.co.uk` (read from CNAME file). Tick **Enforce HTTPS** once available
 - [ ] **Real reel MP4s + posters** for the Work page (Logan to supply)
 - [ ] **Founder photo** on the About page (currently uses founder video; a still might be useful)
-- [ ] **TikTok footer link** — confirm with Logan whether Lode has a TikTok account
 - [ ] **Sente Golf logo** PNG (only remaining SVG-text brand)
 
 ## Deploying
