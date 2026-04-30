@@ -702,7 +702,7 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); letter-spacing: -0.01em; }
 .service-card p { font-size: 0.88rem; color: var(--gray-500); line-height: 1.6; }
 
 /* ============================================
-   WORK — Instagram embeds
+   WORK — self-hosted-ready video cards
    ============================================ */
 .work {
   padding: var(--section-pad) 0;
@@ -712,7 +712,7 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); letter-spacing: -0.01em; }
 
 .work-header {
   text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 56px;
 }
 
 .work-header .section-label {
@@ -723,21 +723,136 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); letter-spacing: -0.01em; }
 .work-header h2 { color: var(--white); }
 .work-header .section-subtitle { color: rgba(255, 255, 255, 0.6); margin: 12px auto 0; }
 
-.work-embeds {
+.work-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 320px));
+  gap: 32px;
   max-width: 1100px;
   margin: 0 auto;
+  justify-content: center;
 }
 
-.work-embed { min-width: 0; }
+.work-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.35s ease;
+}
 
-.work-embed .instagram-media {
-  margin: 0 !important;
-  max-width: 100% !important;
-  min-width: 0 !important;
-  border-radius: var(--radius) !important;
+.work-card:hover { transform: translateY(-6px); }
+
+.work-card-media {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #1a1f2e;
+  box-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.6);
+  transition: box-shadow 0.35s ease, outline 0.2s ease;
+  outline: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.work-card:hover .work-card-media {
+  box-shadow: 0 30px 80px -20px rgba(59, 123, 246, 0.4);
+  outline-color: rgba(0, 194, 255, 0.4);
+}
+
+/* Per-brand gradient backdrop until real MP4 posters land */
+.work-card-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 20%, rgba(59, 123, 246, 0.35), transparent 60%),
+              radial-gradient(ellipse at 70% 80%, rgba(0, 194, 255, 0.25), transparent 60%),
+              linear-gradient(135deg, #0F1729 0%, #1A2540 100%);
+}
+
+.work-card[data-brand="liv"] .work-card-bg {
+  background: radial-gradient(ellipse at 30% 20%, rgba(255, 220, 50, 0.25), transparent 60%),
+              radial-gradient(ellipse at 70% 80%, rgba(220, 38, 38, 0.25), transparent 60%),
+              linear-gradient(135deg, #1a1d3a 0%, #2a1535 100%);
+}
+
+.work-card[data-brand="puma"] .work-card-bg {
+  background: radial-gradient(ellipse at 30% 20%, rgba(255, 100, 50, 0.3), transparent 60%),
+              radial-gradient(ellipse at 70% 80%, rgba(60, 30, 20, 0.5), transparent 60%),
+              linear-gradient(135deg, #1f1410 0%, #2e1a0f 100%);
+}
+
+.work-card-brand {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  height: 28px;
+  width: auto;
+  max-width: 70%;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 4px 8px;
+  border-radius: 6px;
+  z-index: 2;
+}
+
+.work-card-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark);
+  z-index: 2;
+  transition: transform 0.3s ease, background 0.2s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.work-card-play svg {
+  width: 28px;
+  height: 28px;
+  margin-left: 3px;
+}
+
+.work-card:hover .work-card-play {
+  transform: translate(-50%, -50%) scale(1.08);
+  background: var(--white);
+}
+
+.work-card-views {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--white);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+
+.work-card-meta {
+  padding: 18px 4px 0;
+}
+
+.work-card-meta h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--white);
+  margin: 0 0 4px;
+  line-height: 1.3;
+}
+
+.work-card-platform {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.01em;
 }
 
 .work-cta {
@@ -1255,7 +1370,7 @@ footer {
   .services-grid,
   .packages-grid { grid-template-columns: repeat(2, 1fr); }
 
-  .work-embeds { grid-template-columns: repeat(2, 1fr); }
+  .work-grid { gap: 24px; }
 
   .footer-grid { grid-template-columns: repeat(2, 1fr); }
 
@@ -1278,9 +1393,9 @@ footer {
 }
 
 @media (max-width: 640px) {
-  .work-embeds {
-    grid-template-columns: 1fr;
-    max-width: 400px;
+  .work-grid {
+    grid-template-columns: minmax(0, 320px);
+    justify-content: center;
   }
 
   .hero-buttons { flex-direction: column; align-items: center; }
