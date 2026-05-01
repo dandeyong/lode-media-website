@@ -185,7 +185,7 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); letter-spacing: -0.01em; }
 }
 
 .logo img {
-  height: 36px;
+  height: 48px;
   width: auto;
   filter: brightness(0) invert(1);
   transition: var(--transition);
