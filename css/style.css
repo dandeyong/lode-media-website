@@ -185,7 +185,7 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); letter-spacing: -0.01em; }
 }
 
 .logo img {
-  height: 48px;
+  height: 60px;
   width: auto;
   filter: brightness(0) invert(1);
   transition: var(--transition);
@@ -197,13 +197,13 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); letter-spacing: -0.01em; }
 
 .nav-links {
   display: flex;
-  gap: 24px;
+  gap: 30px;
   align-items: center;
   flex-wrap: nowrap;
 }
 
 .nav-links a {
-  font-size: 0.82rem;
+  font-size: 1.025rem;
   white-space: nowrap;
   font-weight: 500;
   color: rgba(255, 255, 255, 0.8);
@@ -227,7 +227,7 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); letter-spacing: -0.01em; }
   color: var(--white) !important;
   -webkit-text-fill-color: var(--white) !important;
   background: rgba(255, 255, 255, 0.2) !important;
-  padding: 6px 16px !important;
+  padding: 8px 20px !important;
   border-radius: 50px !important;
 }
 
@@ -248,8 +248,8 @@ h3 { font-size: clamp(1.1rem, 2vw, 1.3rem); letter-spacing: -0.01em; }
 }
 
 .nav-cta {
-  padding: 10px 24px !important;
-  font-size: 0.8rem !important;
+  padding: 12px 30px !important;
+  font-size: 1rem !important;
   background: var(--white) !important;
   color: var(--dark) !important;
   border-radius: 50px;
